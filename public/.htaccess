@@ -36,3 +36,13 @@
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
 </IfModule>
+
+# Production (cPanel / EasyApache) : ce bloc fixe PHP 8.3 pour le site.
+# Sans lui, Apache retombe sur PHP 8.2 et le site renvoie une erreur 500
+# (« Composer detected issues in your platform »). Ne pas supprimer.
+# php -- BEGIN cPanel-generated handler, do not edit
+# Set the “ea-php83” package as the default “PHP” programming language.
+<IfModule mime_module>
+  AddHandler application/x-httpd-ea-php83 .php .php8 .phtml
+</IfModule>
+# php -- END cPanel-generated handler, do not edit
