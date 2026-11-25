@@ -5,11 +5,11 @@
 
     RewriteEngine On
 
-    # Domaine canonique : www.bwanholding.com et bwantechnologies.com (avec ou sans www)
-    # redirigent en 301 vers https://bwanholding.com. Les validations SSL (AutoSSL /
-    # Let's Encrypt) ne sont pas redirigées. N'affecte pas localhost en développement.
+    # Domaine canonique : www.bwanholding.com redirige en 301 vers https://bwanholding.com.
+    # Les validations SSL (AutoSSL / Let's Encrypt) ne sont pas redirigées.
+    # N'affecte pas localhost en développement.
     RewriteCond %{REQUEST_URI} !^/\.well-known/
-    RewriteCond %{HTTP_HOST} ^(www\.bwanholding\.com|(www\.)?bwantechnologies\.com)$ [NC]
+    RewriteCond %{HTTP_HOST} ^www\.bwanholding\.com$ [NC]
     RewriteRule ^ https://bwanholding.com%{REQUEST_URI} [L,R=301]
 
     # Force HTTPS sur bwanholding.com
